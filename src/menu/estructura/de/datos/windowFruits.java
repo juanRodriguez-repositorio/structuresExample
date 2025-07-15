@@ -36,8 +36,8 @@ public class windowFruits extends JFrame {
     private Color pressedColor=new Color(0, 130, 170);
     
     private List<String> fruitsInOrder = Arrays.asList(
-     "manzana", "fresa", "naranja",
-     "uva", "piña", "arandano"
+     "manzana.png", "fresa.png", "naranja.png",
+     "uva.png", "piña.png", "arandano.png"
     );
     // Constructor
     public windowFruits() {
@@ -73,9 +73,10 @@ public class windowFruits extends JFrame {
          Stack<String> copia = new Stack<>();
          copia.addAll(pilaFrutas); // no modificamos la pila original
 
-         for (int i = fruitsInOrder.size() - 1; i >= 0; i--) {
+         for (int i = 0; i < fruitsInOrder.size(); i++) {
           String esperado = fruitsInOrder.get(i);
           String obtenido = copia.pop();
+          
  
           // Mostrar imagen en orden desapilado
           URL url = getClass().getResource("/images/" + obtenido);
@@ -94,10 +95,10 @@ public class windowFruits extends JFrame {
          resultadoVisualPanel.repaint();
 
          if (correcto) {
-          resultadoLabel.setText("¡Ganaste! 🎉 Orden correcto.");
+          resultadoLabel.setText("¡Ganaste!Orden correcto.");
           resultadoLabel.setForeground(new Color(0, 128, 0)); // verde
          } else {
-          resultadoLabel.setText("Perdiste 😢. El orden no coincide.");
+          resultadoLabel.setText("Perdiste. El orden no coincide.");
           resultadoLabel.setForeground(Color.RED);
          }
         });
@@ -137,7 +138,7 @@ public class windowFruits extends JFrame {
         // Aquí luego se agregan las imágenes de frutas en orden
         topPanel.add(new JLabel("Secuencia a lograr:"));
         for (String fileName : fruitsInOrder) {
-          ImageIcon icon = new ImageIcon(getClass().getResource("/images/"+fileName+".png"));
+          ImageIcon icon = new ImageIcon(getClass().getResource("/images/"+fileName));
           // Escalar imagen a 64x64
           Image img = icon.getImage().getScaledInstance(64, 64, Image.SCALE_SMOOTH);
           JLabel fruitLabel = new JLabel(new ImageIcon(img));
